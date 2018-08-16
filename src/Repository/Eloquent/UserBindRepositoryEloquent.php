@@ -33,7 +33,7 @@ class UserBindRepositoryEloquent extends BaseRepository implements UserBindRepos
      */
     public function getByOpenId($openid)
     {
-        return $this->findByField('openid', $openid);
+        return $this->findByField('open_id', $openid);
     }
 
     /**
