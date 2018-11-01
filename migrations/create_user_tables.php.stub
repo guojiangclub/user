@@ -14,7 +14,7 @@ class CreateUserTables extends Migration
     public function up()
     {
         $prefix = config('ibrand.app.database.prefix', 'ibrand_');
-        if (Schema::hasTable($prefix . 'user')) {
+        if (!Schema::hasTable($prefix . 'user')) {
             Schema::create($prefix . 'user', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->unique()->nullable();
@@ -34,7 +34,7 @@ class CreateUserTables extends Migration
             });
         }
 
-        if (Schema::hasTable($prefix . 'user_bind')) {
+        if (!Schema::hasTable($prefix . 'user_bind')) {
             Schema::create($prefix . 'user_bind', function (Blueprint $table) use ($prefix) {
                 $table->increments('id');
                 $table->unsignedInteger('user_id');
