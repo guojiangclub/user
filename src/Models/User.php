@@ -15,16 +15,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * Class User
- *
- * @package iBrand\Component\User\Models
+ * Class User.
  */
 class User extends Authenticatable
 {
     use  Notifiable;
 
     /**
-     * User Status
+     * User Status.
      */
     const STATUS_FORBIDDEN = 2;
     const STATUS_ENABLED = 1;
@@ -52,7 +50,7 @@ class User extends Authenticatable
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_') . 'user');
+        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_').'user');
     }
 
     /**
@@ -68,5 +66,4 @@ class User extends Authenticatable
 
         return $this->attributes['password'] = $value;
     }
-
 }
