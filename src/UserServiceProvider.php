@@ -30,6 +30,13 @@ class UserServiceProvider extends ServiceProvider
                 __DIR__.'/../migrations/create_user_tables.php.stub' => database_path()."/migrations/{$timestamp}_create_user_tables.php",
             ], 'migrations');
         }
+
+        if (!class_exists('AddUnionidToUserBindTables')) {
+            $timestamp = date('Y_m_d_His', time()+10);
+            $this->publishes([
+                __DIR__.'/../migrations/add_unionid_to_user_bind_tables.php.stub' => database_path()."/migrations/{$timestamp}_add_unionid_to_user_bind_tables.php",
+            ], 'migrations');
+        }
     }
 
     public function register()

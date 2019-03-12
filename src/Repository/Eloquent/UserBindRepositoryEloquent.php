@@ -73,4 +73,15 @@ class UserBindRepositoryEloquent extends BaseRepository implements UserBindRepos
 
         return $this->update(['user_id' => $userId], $userBind->id);
     }
+
+    /**
+     * get user bind model by unionid.
+     *
+     * @param $unionid
+     * @return mixed
+     */
+    public function getByUnionId($unionid)
+    {
+        return $this->findByField('unionid', $unionid);
+    }
 }

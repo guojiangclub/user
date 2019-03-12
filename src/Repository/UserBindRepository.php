@@ -43,4 +43,12 @@ interface UserBindRepository extends RepositoryInterface
      * @return mixed
      */
     public function bindToUser($openId, $userId);
+
+    /**
+     * get user bind model by unionid.
+     *
+     * @param $unionid
+     * @return mixed
+     */
+    public function getByUnionId($unionid);
 }
