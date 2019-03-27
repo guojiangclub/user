@@ -24,8 +24,8 @@ class AddUnionidToUserBindTables extends Migration
     {
         $prefix = config('ibrand.app.database.prefix', 'ibrand_');
 
-        if (Schema::hasTable($prefix . 'user_bind')) {
-            Schema::table($prefix . 'user_bind', function (Blueprint $table)  {
+        if (Schema::hasTable($prefix . 'user_bind') && !Schema::hasColumn($prefix . 'user_bind', 'unionid')) {
+            Schema::table($prefix . 'user_bind', function (Blueprint $table) {
                 $table->string('unionid')->nullable();
             });
         }
@@ -40,8 +40,8 @@ class AddUnionidToUserBindTables extends Migration
     {
         $prefix = config('ibrand.app.database.prefix', 'ibrand_');
 
-        if (Schema::hasTable($prefix . 'user_bind')) {
-            Schema::table($prefix . 'user_bind', function (Blueprint $table)  {
+        if (Schema::hasTable($prefix . 'user_bind') && Schema::hasColumn($prefix . 'user_bind', 'unionid')) {
+            Schema::table($prefix . 'user_bind', function (Blueprint $table) {
                 $table->dropColumn('unionid');
             });
         }
