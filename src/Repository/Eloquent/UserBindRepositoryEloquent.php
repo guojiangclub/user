@@ -96,6 +96,17 @@ class UserBindRepositoryEloquent extends BaseRepository implements UserBindRepos
             return $query->whereNotNull('user_id');
         })->findByField('unionid', $unionid)->first();
 
-        return $model ? $model->user_id : 0;
+        return $model ? $model->user_id : null;
+    }
+
+    /**
+     * update userid by unionid
+     * @param $unionid
+     * @param $userId
+     * @return mixed
+     */
+    public function updateUserIdByUnionId($unionid, $userId)
+    {
+        $this->model->whereNull('user_id')->where('unionid', $unionid)->update(['user_id' => $userId]);
     }
 }
