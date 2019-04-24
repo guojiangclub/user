@@ -51,4 +51,12 @@ interface UserBindRepository extends RepositoryInterface
      * @return mixed
      */
     public function getByUnionId($unionid);
+
+
+    /**
+     * get user id by unionid.
+     * @param $unionid
+     * @return mixed
+     */
+    public function getUserIdByByUnionId($unionid);
 }

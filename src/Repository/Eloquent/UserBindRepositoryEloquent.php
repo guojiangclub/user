@@ -84,4 +84,18 @@ class UserBindRepositoryEloquent extends BaseRepository implements UserBindRepos
     {
         return $this->findByField('unionid', $unionid);
     }
+
+    /**
+     * get user id by unionid.
+     * @param $unionid
+     * @return mixed
+     */
+    public function getUserIdByByUnionId($unionid)
+    {
+        $model = $this->scopeQuery(function ($query) {
+            return $query->whereNotNull('user_id');
+        })->findByField('unionid', $unionid)->first();
+
+        return $model ? $model->user_id : 0;
+    }
 }
