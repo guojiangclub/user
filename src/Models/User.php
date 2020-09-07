@@ -48,9 +48,9 @@ class User extends Authenticatable
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('ibrand.app.database.prefix', 'ibrand_').'user');
+
+        parent::__construct($attributes);
     }
 
     /**
